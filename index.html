@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOLAB | The Museum Factory</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;500;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background-color: #0a0a0a;
+            color: #f5f5f5;
+            overflow-x: hidden; /* 防止橫向捲動條 */
+        }
+        .sans {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* 隱藏捲軸但保留功能 (美觀考量) */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333; 
+        }
+
+        /* 用於視差效果的容器設定 */
+        .parallax-container {
+            position: relative;
+            overflow: hidden;
+            height: 100vh;
+        }
+        
+        /* 比較圖層的設定 */
+        .comparison-section {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .image-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .after-image-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; /* 初始寬度 */
+            height: 100%;
+            overflow: hidden;
+            z-index: 2;
+        }
+        .separator {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 2px;
+            height: 100%;
+            background: rgba(255,255,255,0.5);
+            z-index: 3;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="parallax-container flex items-center justify-center" id="hero">
+        <div class="absolute inset-0 z-0">
+            <img src="_3060953-HDR.jpg" alt="JOLAB Exterior" class="w-full h-full object-cover opacity-60" id="hero-img">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/90"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-6 max-w-4xl" id="hero-text">
+            <h2 class="sans text-xs tracking-[0.3em] uppercase mb-4 text-gray-400">Project: JOLAB</h2>
+            <h1 class="text-5xl md:text-7xl font-light mb-8 leading-tight">像美術館的工廠<br><span class="text-3xl md:text-5xl opacity-80 italic">The Museum Factory</span></h1>
+            <p class="text-lg md:text-xl text-gray-300 leading-relaxed font-light">
+                我們引入了光，馴服了風。<br>在熱帶的豔陽下，這裡不再是封閉的生產機器，<br>而是一座透明的容器。
+            </p>
+        </div>
+    </section>
+
+
+    <section class="comparison-section" id="reveal-section">
+        
+        <div class="image-layer z-10">
+            <img src="Panorama-003.jpg" alt="Concept 3D" class="w-full h-full object-cover grayscale brightness-50 contrast-125">
+            <div class="absolute bottom-10 left-10 text-white z-20">
+                <p class="sans text-sm tracking-widest border border-white/30 px-4 py-2 inline-block backdrop-blur-sm">PHASE 1: CONCEPT / 3D RENDER</p>
+            </div>
+        </div>
+
+        <div class="after-image-wrapper z-20" id="reveal-mask">
+            <img src="Panorama-003.jpg" alt="Completed Reality" class="w-full h-full object-cover" style="width: 100vw; max-width: none;"> <div class="separator"></div>
+            
+            <div class="absolute bottom-10 right-10 text-white text-right">
+                 <p class="sans text-sm tracking-widest border border-white/30 px-4 py-2 inline-block backdrop-blur-sm bg-black/20">PHASE 2: REALITY / 2022</p>
+            </div>
+        </div>
+        
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 text-center pointer-events-none mix-blend-difference">
+            <h2 class="text-4xl font-bold text-white opacity-80">所見，即所建</h2>
+        </div>
+    </section>
+
+
+    <section class="h-screen relative flex items-center overflow-hidden bg-white text-black" id="garden-section">
+        <div class="absolute inset-0 z-0">
+             <img src="_3052471.jpg" id="garden-bg" alt="Suspended Garden" class="w-full h-full object-cover opacity-90 scale-110">
+        </div>
+        
+        <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 w-full h-full">
+            <div class="flex items-center justify-center md:justify-end p-12 bg-white/70 backdrop-blur-md md:bg-transparent md:backdrop-blur-none">
+                <div class="max-w-md bg-white/90 p-8 shadow-2xl md:translate-y-20" id="garden-card">
+                    <h3 class="text-3xl font-bold mb-4">會呼吸的綠洲</h3>
+                    <p class="text-gray-700 leading-loose">
+                        在絕對理性的無塵室上方，生長著絕對感性的熱帶花園。<br><br>
+                        雙層帷幕過濾了炙熱，空中花園引入了氣流。訪客漫步於懸吊步道，俯瞰下方的精密生產，見證工業與自然在光影中的精密對話。
+                    </p>
+                </div>
+            </div>
+            <div class="hidden md:block"></div>
+        </div>
+    </section>
+
+
+    <section class="py-24 bg-[#111] px-6">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <img src="CF042760.jpg" alt="Night View" class="w-full shadow-lg rounded-sm opacity-80 hover:opacity-100 transition duration-700">
+                <p class="mt-4 text-gray-500 text-sm sans">JOLAB Night View</p>
+            </div>
+            
+            <div>
+                <h3 class="text-2xl mb-8 border-l-4 border-white pl-4">國際殊榮 Recognition</h3>
+                <ul class="space-y-6 text-gray-400 font-light">
+                    <li class="flex items-start group hover:text-white transition cursor-default">
+                        <span class="text-xs sans border border-gray-600 px-2 py-1 mr-4 rounded mt-1 group-hover:border-white">2022</span>
+                        <div>
+                            <strong class="block text-lg text-white">A’DESIGN AWARD</strong>
+                            <span class="text-sm">Bronze Winner / Italy</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start group hover:text-white transition cursor-default">
+                        <span class="text-xs sans border border-gray-600 px-2 py-1 mr-4 rounded mt-1 group-hover:border-white">2021</span>
+                        <div>
+                            <strong class="block text-lg text-white">World Architecture Festival (WAF)</strong>
+                            <span class="text-sm">Shortlist / Production Energy & Recycling</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start group hover:text-white transition cursor-default">
+                        <span class="text-xs sans border border-gray-600 px-2 py-1 mr-4 rounded mt-1 group-hover:border-white">2020</span>
+                        <div>
+                            <strong class="block text-lg text-white">OPAL Award</strong>
+                            <span class="text-sm">Platinum (Architectural) & Winner (Interior) / UK</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start group hover:text-white transition cursor-default">
+                        <span class="text-xs sans border border-gray-600 px-2 py-1 mr-4 rounded mt-1 group-hover:border-white">2020</span>
+                        <div>
+                            <strong class="block text-lg text-white">Design For Asia (DFA)</strong>
+                            <span class="text-sm">Bronze Award / Hong Kong</span>
+                        </div>
+                    </li>
+                </ul>
+                
+                <div class="mt-12 pt-8 border-t border-gray-800">
+                    <p class="text-sm text-gray-500 mb-2">CLIENT: JOLA International</p>
+                    <p class="text-sm text-gray-500">LOCATION: Kaohsiung, Taiwan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-12 text-gray-600 text-xs sans">
+        <p>SCROLLYTELLING DEMO BY GEMINI</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+    <script>
+        // 1. 初始化 Lenis 平滑捲動 (讓捲動有高級感)
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            smooth: true,
+        })
+        function raf(time) {
+            lenis.raf(time)
+            requestAnimationFrame(raf)
+        }
+        requestAnimationFrame(raf)
+
+        // 2. 註冊 GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // --- 動畫邏輯 ---
+
+        // A. 首屏 Hero 動畫
+        const tlHero = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#hero",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+        tlHero.to("#hero-img", { scale: 1.1, opacity: 0 }, 0) // 背景放大並消失
+              .to("#hero-text", { y: -100, opacity: 0 }, 0); // 文字上浮並消失
+
+
+        // B. 核心揭示效果 (The Reveal)
+        // 這是最關鍵的部分：鎖定畫面，移動遮罩
+        ScrollTrigger.create({
+            trigger: "#reveal-section",
+            start: "top top", // 當區塊頂部碰到視窗頂部時
+            end: "+=200%",    // 捲動距離為視窗高度的 200% (延長體驗時間)
+            pin: true,        // 釘選住這個區塊
+            scrub: true,      // 動畫隨捲動播放
+            onUpdate: (self) => {
+                // self.progress 是 0 到 1 的數值
+                // 我們用這個數值來控制遮罩的寬度
+                // 為了效果，我們讓它反向：一開始看到 3D (底層)，捲動後 Mask (上層實景) 變寬覆蓋
+                const progress = self.progress * 100;
+                // 設定遮罩寬度 (實景圖出現)
+                document.getElementById("reveal-mask").style.width = `${progress}%`;
+            }
+        });
+
+        // 初始狀態設定：開始時遮罩寬度為 0 (只看到底層概念圖)
+        gsap.set("#reveal-mask", { width: "0%" });
+
+
+        // C. 懸浮花園視差 (Parallax)
+        gsap.to("#garden-bg", {
+            scrollTrigger: {
+                trigger: "#garden-section",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true
+            },
+            yPercent: 20, // 背景圖片移動速度慢
+            scale: 1.0 // 確保圖片覆蓋
+        });
+
+        gsap.from("#garden-card", {
+            scrollTrigger: {
+                trigger: "#garden-section",
+                start: "top center",
+                end: "center center",
+                scrub: 1
+            },
+            y: 100,
+            opacity: 0
+        });
+
+    </script>
+</body>
+</html>
